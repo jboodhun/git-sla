@@ -13,3 +13,19 @@ Here's how it's set up:
 * Jest - Unit Testing
 * JSON Server
 * Redux
+
+## Project Structure
+
+````
+$ tree --charset unicode
+.
+|-- LICENSE
+|-- package.json
+|-- package-lock.json
+|-- README.md
+|-- src
+|   |-- index.html
+|   |-- index.js
+|   `-- input.js
+`-- webpack.config.js
+````
