@@ -4,4 +4,5 @@ This is a simple React App set up with:
 * Webpack
 * Gulp
 * Nightwatch - Selenium testing
-* Jest - Unit Testing 
+* Jest - Unit Testing
+* JSON Server

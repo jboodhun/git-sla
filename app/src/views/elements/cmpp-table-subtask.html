@@ -1,0 +1,270 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../../../bower_components/cmpp-core/ajax/cmpp-ajax.html">
+
+<link type="text/css" rel="stylesheet" href="../../../css/jquery.qtip.css" />
+<script type="text/javascript" src="../../../js/jquery.qtip.js"></script>
+<script type="text/javascript" src="../../../js/code_prettify.js"></script>
+<link type="text/css" rel="stylesheet" href="../../../css/prettify.css" />
+
+<dom-module id="cmpp-table-subtask">
+    <style>
+        .btn,
+        .btn:active {
+            color: #fff;
+            opacity: 0.8;
+        }
+        
+        .btn:hover {
+            color: #fff;
+            opacity: 1;
+        }
+        
+        .btn.actions {
+            width: 150px;
+            text-align: left;
+        }
+        
+        .btn-plus {
+            background-color: white;
+            border-color: grey;
+        }  
+
+        .fa-info-circle {
+            font-size:20px;
+            color:#489FDF;
+            position:relative;
+            top:0px;
+            left:5px;
+            cursor:pointer;
+        }
+
+        .desc {
+            display:block;
+            padding:3px 10px;
+            clear:both;
+            margin:10px 0 10px 0;
+            display:none;
+        } 
+     td {
+        vertical-align:middle;
+      }
+
+     pre {
+        font-size: 12px !important;
+      }
+
+
+    </style>
+
+    <template>
+        <td></td>
+        <td>{{subtask.Name}}</td>
+        <td>{{subtask.CmppId}}</td>
+        <td> <i class="fa fa-info-circle"></i></td>
+        <td>{{subtask.TaskTypeName}}</td>
+        <td>
+            <cmpp-task-progress size="40" progress="{{subtask.Progress}}" state="{{subtask.State}}" inline></cmpp-task-progress>
+        </td>
+        <td>[[_getCluster(subtask)]]</td>
+        <td>[[_humanDate(subtask.StartTime)]]</td>
+        <td>[[_humanDate(subtask.EndTime)]]</td>
+        <td></td>
+        <td></td>
+       
+        
+        <!--
+    
+        <template is="dom-if" if="[[_isTaskType(subtask.TaskTypeName,'Deliver')]]">
+            <td>Destination: [[_getAttribute(attributes._embedded.item, 'DeliveryTarget')]]</td>
+            <td></td>
+        </template>
+    <template is="dom-if" if="[[_isTaskType(subtask.TaskTypeName,'Transcode')]]">
+            <td>Output Profile: [[_getAttribute(attributes._embedded.item, '')]]</td>
+            <td></td>
+        </template>
+    <template is="dom-if" if="[[_isTaskType(subtask.TaskTypeName,'Qc')]]">
+            <td>Test Plan</td>
+            <td></td>
+        </template>
+        <template is="dom-if" if="[[_isTaskType(subtask.TaskTypeName,'Copy')]]">
+            <td>Destination: [[_getAttribute(attributes._embedded.item, 'OutputFilePrefix')]]</td>
+            <td>Source</td>   
+        </template>
+
+        -->
+        <template is="dom-if" if="[[subtask]]">
+
+        <cmpp-ajax auto="[[subtask]]"                  
+                   url="[[subtask._links.self.href]]"
+                   loading="{{loading}}"
+                   last-response="{{task}}"></cmpp-ajax>
+        
+         <cmpp-ajax auto="[[task]]"                  
+                   url="[[task._links.cmpp:attributes.href]]"
+                   loading="{{loading}}"
+                   last-response="{{attributes}}"></cmpp-ajax>
+
+            <cmpp-ajax auto                  
+                   url="[[subtaskAttributesHref]]"
+                   last-response="[[subtaskAttributes]]"
+                   on-response="_handleSubTaskAttributes">
+            </cmpp-ajax>
+        </template>
+        
+    </template>
+</dom-module>
+
+<script>
+    Polymer({
+        is: 'cmpp-table-subtask',
+
+        extends: 'tr',
+
+        properties: {
+            subtask: {
+                type: Object,
+                observer: 'subtaskChanged'
+            },
+            task: {
+                type: Object,
+                observer: 'taskChanged'
+            },
+            attributes: {
+                type: Object,
+                observer: 'attributesChanged'
+            },
+            description: {
+                type: String,
+                value: ''
+            }
+
+        },
+
+        x: function(data) {
+            console.log(data);
+        },
+      
+        _humanDate: function(x) {
+            if (x) {
+                var date = moment(x).utc().format("DD-MM-YYYY HH:mm:ss");
+                return date + ' (' + this.timeFromNow(x) + ')';
+            }
+            return null;
+        },
+        
+        timeFromNow: function(time) {
+            if (!time) return null;
+            return moment(time).fromNow();
+        },
+
+        _handleSubTaskAttributes: function(data) {
+            
+            var me = this;
+            //console.log(data.detail.__data__.response._embedded);
+            this.subtaskAttributes = data.detail.__data__.response._embedded;
+
+            var attributes = data.detail.__data__.response._embedded.item;
+            //console.log(attributes);
+
+            var tipContent = '<table><thead><tr><th>Key</th><th>Value</th></tr></thead>';
+
+            for (var i = 0; i < attributes.length; i++) {
+
+                var value = attributes[i].Value;
+
+                if(value.startsWith('{"')) {
+                    value = JSON.parse(value);
+                    value = JSON.stringify(value, undefined, 4);
+                    value = '<code class="prettyprint language-java" style="padding:0"><pre style="font-size:10px !important">'+value+'</pre></code>';
+                }
+
+                tipContent = tipContent+'<tr><td><strong>'+attributes[i].Name+'</strong></td><td style="max-width:600px; min-width:250px">'+value+'</td></tr>';
+            }
+
+            tipContent = tipContent+'</table>';
+
+
+            $('.fa-info-circle').qtip({ // Grab some elements to apply the tooltip to
+
+                    content: {
+                        title: '<strong>Attribute Details</strong>',
+                        text: tipContent,
+                        button: 'Close'
+                    },
+                    show: {
+                        event: 'click',
+                    },
+                    hide: {
+                        event: 'unfocus'
+                    },
+                    //effect: 'slide',
+                    position: {
+                        my: 'bottom center', // Position my top left...
+                        at: 'top right', // at the bottom right of...
+                        adjust: {
+                            x: -10
+                        }
+                    },
+                    style: {
+                        classes: 'qtip-blue qtip-bootstrap qtip-shadow'
+                    },
+                    hide: {
+                        event: 'unfocus'
+                    }
+                });
+            
+        },
+      
+      _getCluster: function (cluster) {
+        if(cluster.ClusterAffinities) {
+          return cluster.ClusterAffinities[0].ClusterId ? cluster.ClusterAffinities[0].ClusterId : '';
+        }
+      },
+      
+        taskChanged: function () {
+//             console.log(this.task)    ;
+        },
+        subtaskChanged: function () {
+            if(this.subtask._embedded) {
+                if(this.subtask._links["cmpp:attributes"]) {
+                    this.subtaskAttributesHref = this.subtask._links["cmpp:attributes"].href;
+                }
+                if(this.subtask._embedded["cmpp:message"]) {
+                    if(this.subtask._embedded["cmpp:message"][0]) {
+                        this.description = this.subtask._embedded["cmpp:message"][0].Message;
+                    }
+                }
+           }
+        },
+        
+        attributesChanged: function () {
+//             console.log(this.attributes)    ;
+        },
+        
+        _isTaskType: function(taskType, which) {
+            return taskType.toUpperCase().includes(which.toUpperCase());
+        },
+        
+        _getAttribute: function(attributes, which) {
+            var value = "";
+//            console.log(attributes)
+            attributes.forEach(function (attribute) {
+                if (attribute.Name == which) {
+//                    console.log(attribute.Value);
+                    return value = attribute.Value;
+                }   
+            });
+            return value;
+        },
+
+    });
+
+    $(document).ready(function() {
+        /*$('.fa-info-circle').click(function() {
+            $('.desc').toggle();
+        });*/
+    });
+
+
+</script>
