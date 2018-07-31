@@ -2,6 +2,8 @@
 
 ### Built with Webpack Babel and Gulp under the hood
 
+[![GitHub version](https://badge.fury.io/gh/temilaj%2Freact-webpack-starter.svg)](https://github.com/jboodhun/React-App-Boilerplate)
+
 This is an experimental [React](http://google.com) boilerplate App that I use to spin my front-end environment when I am building new applications.
 
 Here's how it's set up:
