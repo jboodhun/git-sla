@@ -1,0 +1,38 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+
+<script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+<script type='text/javascript' src="../../../bower_components/cmpp-time-entry/jquery.plugin.js" crossorigin="anonymous"></script>
+<script type='text/javascript' src="../../../bower_components/cmpp-time-entry/jquery.timeentry.js" crossorigin="anonymous"></script>
+
+<dom-module id="cmpp-time-entry">
+
+<template>
+	<input id="currentTime" value="[[time]]" class="text"/>
+</template>
+
+<script>
+    Polymer({
+        is: 'cmpp-time-entry',
+
+        properties: {
+        	fps: {
+        		type: Number
+        	},
+        	time: {
+        		type: String
+        	}
+        },
+
+        attached: function() {
+        	var maxFps = this.fps - 1;
+        	$('#currentTime').timeEntry({
+                unlimitedHours: true,
+                showSeconds: true,
+                spinnerImage: '',
+                ampmPrefix: ':',
+                maxFps: maxFps
+            });
+        }
+    });
+</script>
+</dom-module>

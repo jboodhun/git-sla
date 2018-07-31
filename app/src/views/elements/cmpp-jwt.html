@@ -1,0 +1,93 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/iron-ajax/iron-request.html">
+<link rel="import" href="../../../bower_components/cmpp-core/ajax/cmpp-ajax.html">
+<link rel="import" href="../../../bower_components/iron-localstorage/iron-localstorage.html">
+
+<dom-module id="cmpp-jwt">
+	<template>
+
+		<cmpp-ajax auto="[[endpoint]]"                  
+           url="[[endpoint]]/extauths/?uri=cmpp:facility:user-tasks-api&resourceType=api&permissions=&context=&credentialsType=JWT"
+           loading="{{loading}}"
+           last-response="{{extauths}}"
+           on-response="_handleExtAuths"></cmpp-ajax>
+
+        <template is="dom-if" if="extauths">         
+            <cmpp-ajax auto
+                url='[[issuer]]' 
+                method="POST" 
+                hal 
+                content-type="application/json" 
+                body="{{_formatBody()}}"  
+                last-response="{{credentials}}"
+                on-response="_handleCredentials">
+            </cmpp-ajax>    
+        </template>
+		
+	</template>
+</dom-module>
+
+<script>
+    (function () {
+      
+        Polymer({
+            is: 'cmpp-jwt',
+
+            properties: {
+             
+                token: {
+                    type: String,
+                    notify: true,
+                    readOnly: true
+                }
+            },
+
+            attached: function (data) {
+               var me = this;
+               console.log('Loading cmpp jwt ...');
+               me.endpoint = app.deployConfig.cmpp.apiEndpoint;
+            },
+
+            _formatBody(UriReference) {
+	            var body = {
+	                "uri": "cmpp:facility:user-tasks-api"
+	            };
+	            return body;
+	        },
+
+            _handleExtAuths: function(data) {
+            	
+            	var me = this;
+            	var issuer = '';
+				
+				var extAuths = data.detail.__data__.response._embedded;
+
+            	if(extAuths.item) {
+
+            		var items = extAuths.item;
+
+	            	for (var i = 0; i < items.length; i++) {
+					    var item = items[i];
+					    if(item.UserData == '{"Uri": "https://l2x8cpja24.execute-api.eu-west-1.amazonaws.com/stage"}') {
+					    	if(item._links) {
+	                            if(item._links['cmpp:acquirecredentials']) {
+	                                if(item._links['cmpp:acquirecredentials'].href) {
+	                                    me.issuer = item._links['cmpp:acquirecredentials'].href;
+	                                }
+	                            }
+                        	}
+					    }
+					}
+				}
+            },
+
+            _handleCredentials: function(data) {
+            	console.log(data.detail.__data__.response);
+            	localStorage.setItem('jwtToken', JSON.stringify(data.detail.__data__.response));
+            }
+
+        });
+    })();
+
+
+</script>

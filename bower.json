@@ -1,0 +1,26 @@
+{
+  "name": "react-redux",
+  "authors": [
+    "Jay Boodhun <jay.boodhun@ericsson.com>"
+  ],
+  "description": "React Redux",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "main": "index.html",
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "font-awesome": "font-awsome#^4.6.1",
+    "underscore": "^1.8.3",
+    "carbon-route": "^0.8.4",
+    "webcomponentsjs": "~1.0.6"
+  },
+  "devDependencies": {
+    "web-component-tester": "*"
+  },
+  "resolutions": {
+    "webcomponentsjs": "~1.0.6"
+  }
+}
