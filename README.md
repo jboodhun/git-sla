@@ -61,5 +61,7 @@ $ tree --charset unicode
 3. Run the following commands
 
 ```
-yarn Install
+yarn install
+
+bower install
 ```

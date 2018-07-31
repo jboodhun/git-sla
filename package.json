@@ -101,24 +101,6 @@
       "window": true,
       "location": {
         "search": ""
-      },
-      "app": {
-        "Name": "Workflows",
-        "config": {
-          "title": "Workflows",
-          "video": {
-            "_default": "eu-west-1"
-          }
-        },
-        "deployConfig": {
-          "cmpp": {
-            "apiEndpoint": "https://chip-cors.malo.dev.aws.redbeemedia.com/v1"
-          },
-          "mockbird": {
-            "component": "${component}",
-            "instance": "${instance}"
-          }
-        }
       }
     }
   },
