@@ -65,3 +65,17 @@ yarn install
 
 bower install
 ```
+
+These commands will set up all the modules and libraries you need for the App.
+
+To Run the App:
+
+```
+yarn run start
+```
+
+If you want to rebuild the dist folder:
+
+```
+yarn run build
+```
