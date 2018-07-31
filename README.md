@@ -53,3 +53,13 @@ $ tree --charset unicode
 |-- wct.conf.js
 |-- webpack.config.js
 ````
+
+## How To Set Up
+
+1. Checkout the code
+2. Navigate into the project directory
+3. Run the following commands
+
+```
+yarn Install
+```
