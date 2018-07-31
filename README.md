@@ -19,13 +19,37 @@ Here's how it's set up:
 ````
 $ tree --charset unicode
 .
-|-- LICENSE
-|-- package.json
-|-- package-lock.json
-|-- README.md
-|-- src
+|-- app
+|   |-- bower_components
+|   |-- css
+|   |-- fonts
+|   |-- images
+|   |-- js
+|   |-- src
+|   |-- |-- actions
+|   |-- |-- components
+|   |-- |-- containers
+|   |-- |-- reducers
+|   |-- |-- store
+|   |-- |-- views
+|   |-- |-- index.ejs
+|   |-- |-- index.js
+|   |-- |-- routes.js
 |   |-- index.html
-|   |-- index.js
-|   `-- input.js
-`-- webpack.config.js
+|-- dist
+|-- jsonserver
+|-- node_modules
+|-- test
+|-- .babelrc
+|-- .bowerrc
+|-- .bowerrc_template
+|-- .gitignore
+|-- bower.json
+|-- gulpfile.js
+|-- jenkinsfile
+|-- nightwatch.conf.js
+|-- package.json
+|-- README.md
+|-- wct.conf.js
+|-- webpack.config.js
 ````
