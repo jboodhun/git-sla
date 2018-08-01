@@ -35,7 +35,6 @@ $RECYCLE.BIN/
 
 node_mobules
 node_modules
-dist
 bower_components
 .tmp
 .publish/
