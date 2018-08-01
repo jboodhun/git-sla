@@ -97,9 +97,9 @@ module.exports = {
     // remain in ES2015.
     new CopyWebpackPlugin([{
       from: path.resolve(__dirname, 'app/bower_components/webcomponentsjs/*.js'),
-      to: 'bower_components/webcomponentsjs/[name].[ext]'
+      to: 'js/[name].[ext]'
     }]),
-    
+
     // Move files out of your bower bower_components
     // Or node modules into your dist directory
     // to server for your app.
