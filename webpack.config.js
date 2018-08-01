@@ -99,7 +99,7 @@ module.exports = {
       from: path.resolve(__dirname, 'app/bower_components/webcomponentsjs/*.js'),
       to: 'bower_components/webcomponentsjs/[name].[ext]'
     }]),
-
+    
     // Move files out of your bower bower_components
     // Or node modules into your dist directory
     // to server for your app.
