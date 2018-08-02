@@ -138,6 +138,7 @@
     "mock-local-storage": "^1.0.5",
     "moment": "^2.18.1",
     "paper-input": "^3.0.2",
+    "path-to-regexp": "^2.2.1",
     "polymer-webpack-loader": "^1.2.6",
     "query-string": "^5.0.0",
     "randomatic": "^1.1.5",
