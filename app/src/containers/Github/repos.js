@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Search from '../../components/Search/';
 
 // Considering adding Bootstrap table with pagination.
 //import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
@@ -18,7 +19,6 @@ class Repos extends Component {
 
     super(props);
     this.refresh = this.refresh.bind(this);
-    this.search = this.search.bind(this);
   }
 
   componentDidMount() {
@@ -46,15 +46,6 @@ class Repos extends Component {
     clearInterval(this._refreshInterval);
   }
 
-  search(event) {
-    //console.log(event.target.value);
-    //$('ul').hide();
-    var regex = new RegExp('\\b\\w*' + event.target.value + '\\w*\\b');
-    $('.repo').hide().filter(function () {
-        return regex.test($(this).data('name'))
-    }).show();
-  }
-
   render() {
     var repos = this.props.repos;
 
@@ -62,7 +53,7 @@ class Repos extends Component {
       <div>
         <div id="head">
           <h1>Repositories</h1>
-          <input type="text" id="search" name="search" className="form-control" placeholder="Search ..." onChange={this.search}/>
+          <Search />
         </div>
         <ul>
         {repos.map((repo) =>
