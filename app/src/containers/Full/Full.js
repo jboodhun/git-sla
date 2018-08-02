@@ -1,13 +1,14 @@
 /* React Modules*/
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 
-import configureStore from '../../store/configureStore';
-const store = configureStore();
+/* Import Core Layout Components*/
+//import Header from '../../layout/Header/';
+import Header from '../../layout/Header/';
+import Breadcrumb from '../../layout/Breadcrumb/';
 
-import Demo from '../../components/demo/demo';
+import Github from '../../views/Github/repos';
 
 class Full extends Component {
 
@@ -23,24 +24,23 @@ class Full extends Component {
 
     return (
       <div className="app">
+        <Header />
         <div className="app-body">
+
           <main className="main">
-            <div className="container-fluid">
+
               <Switch>
-                <Route path="/" name="Tasks List" component={Demo}/>
+                <Route path="/repos" name="Repos List" component={Github}/>
+                <Redirect from="/" to="/repos"/>
               </Switch>
-            </div>
+
           </main>
+
         </div>
+
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-    return {
-
-    };
-};
-
-export default connect(mapStateToProps)(Full);
+export default Full;

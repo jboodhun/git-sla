@@ -1,11 +1,12 @@
 /* Combine all of our Reducers here */
+/* Set initial states */
 import { combineReducers } from 'redux';
-import home from './reducer-filters';
+import * as Github from './reducer-github.js';
+import * as Update from './reducer-update.js';
 
-const createReducer = asyncReducers =>
-  combineReducers({
-    home,
-    ...asyncReducers
-  });
+const Reducers = Object.assign(Github, Update);
 
-export default createReducer;
+const allReducers = combineReducers(Reducers);
+
+
+export default allReducers;

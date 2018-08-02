@@ -1,0 +1,6 @@
+#total-assets {
+  float: right;
+  padding-right: 5px;
+  margin-bottom: 15px;
+  color: var(--midgrey);
+}

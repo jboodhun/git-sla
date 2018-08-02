@@ -1,24 +1,28 @@
 {
-  "name": "react-redux",
+  "name": "git-dashboard-project",
   "authors": [
-    "Jay Boodhun <jay.boodhun@ericsson.com>"
+    "Jay Boodhun"
   ],
-  "description": "React Redux",
+  "description": "Git Dashboard Project",
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components"
+    "bower_components",
+    "test",
+    "externs/**",
+    ".gitignore"
   ],
-  "main": "index.html",
   "dependencies": {
     "bootstrap": "^3.3.6",
     "font-awesome": "font-awsome#^4.6.1",
     "underscore": "^1.8.3",
-    "carbon-route": "^0.8.4",
-    "webcomponentsjs": "~1.0.6"
+    "jquery": "^3.2.1",
+    "webcomponentsjs": "~1.0.6",
+    "moment": "^2.22.2"
   },
   "devDependencies": {
-    "web-component-tester": "*"
+    "web-component-tester": "^5.0.0",
+    "xml2json": "*"
   },
   "resolutions": {
     "webcomponentsjs": "~1.0.6"

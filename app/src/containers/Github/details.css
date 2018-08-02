@@ -1,0 +1,585 @@
+#details-page h1,
+#delivery_dialog h1,
+#transcode_dialog h1 {
+  margin: 20px auto 0 auto;
+  font-family: openSansLight;
+  font-size: 20pt;
+  color: var(--red);
+}
+
+#delivery_dialog h1,
+#transcode_dialog h1 {
+   color: var(--red);
+}
+
+#details-page h2,
+#delivery_dialog h2,
+#transcode_dialog h2 {
+  margin-bottom: 0;
+  font-family: openSansLight;
+  font-size: 15pt;
+  color: var(--darkgrey);
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.fa.red {
+  color:#ea4335;
+}
+
+.timeline-inverted.red .timeline-badge.success {
+  background-color: #ea4335 !important;
+}
+
+#head-right {
+	background: var(--white);
+	padding: 20px;
+	border: 1px solid #E1E1E1;
+  border-radius: 3px;
+/*  box-shadow: 1px 1px 5px #dcdcdc;*/
+	height: 100%;
+}
+
+#head-right h4,
+#assetfiles-tab h4 {
+  margin-bottom: 20px;
+  color: var(--red);
+  font-family: openSansLight;
+  font-style: normal;
+}
+
+#details-page .row.row-section {
+  margin-bottom: 15px;
+}
+
+h5 {
+	font-size: 15pt;
+	margin-bottom: 10px;
+	color: #333333;
+	font-family: openSansLight;
+}
+
+#delivery_dialog,
+#transcode_dialog,
+#deliverPlayout_dialog {
+	width: 95%;
+  min-height: 700px;
+  height: 90%;
+	border-radius: 3px;
+  font-family: openSansRegular;
+  font-size: 11pt;
+  background-color: var(--paper);
+}
+
+#delivery_dialog h3,
+#transcode_dialog h3,
+#deliverPlayout_dialog h3 {
+  font-size: 12pt;
+  font-weight: 500;
+  color: var(--darkgrey);
+  margin-top: 20px;
+}
+
+#delivery_dialog h4,
+#transcode_dialog h4,
+#deliverPlayout_dialog h4 {
+  font-size: 12pt;
+/*  color: var(--midgrey);*/
+}
+
+#delivery_dialog .closeDialog,
+#transcode_dialog .closeDialog,
+#deliverPlayout_dialog .closeDialog,
+#edit_dialog .closeDialog,
+#feedback_delivery_dialog .closeDialog,
+#feedback_transcode_dialog .closeDialog,
+#feedback_deliverPlayout_dialog .closeDialog {
+  z-index: 999999;
+  float: right;
+  color: var(--white);
+  font-size: 12pt;
+  font-weight: 100px;
+  cursor: grab;
+}
+
+#feedback_delivery_dialog .closeDialog:hover,
+#feedback_transcode_dialog .closeDialog:hover,
+#feeback_deliverPlayout_dialog .closeDialog:hover {
+  opacity: 0.8;
+}
+
+#delivery_dialog .closeDialog:hover {
+ color: var(--charcoal); 
+}
+
+#transcode_dialog .closeDialog:hover,
+#edit_dialog .closeDialog:hover {
+  color: var(--maroon);
+}
+
+#deliverPlayout_dialog .closeDialog:hover {
+  color: var(--salmon);
+}
+
+.btn.actions {
+  color:#FFF;
+  opacity:1;
+  width: 150px;
+	text-align: left;
+}
+
+.btn.actions:hover {
+  opacity:0.8;
+}
+
+.btn.actions.disabled {
+  opacity: 1;
+  background-color: var(--lightgrey);
+  border-color: var(--lightgrey);
+}
+
+.btn-delivery {
+	background-color: var(--charcoal);
+	border-color: var(--charcoal);
+}
+
+.btn-transcode {
+	background-color: var(--maroon);
+	border-color: var(--maroon);
+}
+
+.btn-deliverPlayout {
+	background-color: var(--salmon);
+	border-color: var(--salmon);
+}
+
+.btn-create-browse {
+	background-color: var(--midgrey);
+	border-color: var(--midgrey);
+}
+
+
+.btn-close {
+	background-color: white;
+	color: grey;
+	position: absolute;
+	right: -15px;
+	top: -35px;
+}
+
+#delivery_dialog .row, 
+#transcode_dialog .row {
+/*  margin: 0px;*/
+}
+
+#delivery_dialog .form-section, 
+#transcode_dialog .row,
+#deliverPlayout_dialog .row {
+  padding: 15px;
+/*  margin-bottom: 30px;*/
+}
+
+#delivery_dialog .row-dialog-delivery{
+  margin: auto;
+}
+
+@media only screen  and (min-width : 768px) {
+   .form-delivery .input-assefiles {
+     height: 450px;
+     overflow-y: auto;
+  }
+  
+  .input-compositions {
+    height: 400px;
+    overflow-y: auto;
+  }
+  
+  .playout-systems {
+    height: 450px;
+    overflow-y: auto;
+  }
+}
+
+/* Desktops and laptops ----------- */
+@media only screen  and (min-width : 1200px) {
+  .form-delivery .input-assefiles {
+    height: 370px;
+    overflow-y: auto;
+  }
+  
+  .input-compositions {
+    height: 200px;
+    overflow-y: auto;
+  }
+  
+  .playout-systems {
+    height: 300px;
+    overflow-y: auto;
+  }
+}
+
+/* Desktops and laptops ----------- */
+@media only screen  and (min-width : 1400px) {
+  .form-delivery .input-assefiles {
+    height: 370px;
+    overflow-y: auto;
+  }
+  
+  .input-compositions {
+    height: 200px;
+    overflow-y: auto;
+  }
+  
+  .playout-systems {
+    height: 300px;
+    overflow-y: auto;
+  }
+}
+
+/* Large screens ----------- */
+@media only screen  and (min-width : 1800px) {
+  .form-delivery .input-assefiles {
+    height: 500px;
+    overflow-y: auto;
+  }
+  
+  .input-compositions {
+    height: 300px;
+    overflow-y: auto;
+  }
+  
+  .playout-systems {
+    height: 400px;
+    overflow-y: auto;
+  }
+}
+
+.selected-assetfile,
+.selected-composition,
+.selected-playout-system {
+  background: var(--paper);
+  color: var(--salmon);
+}
+
+.select-up .Select-menu-outer {
+  position: absolute !important;
+  top: auto !important;
+  bottom: calc(100% - 1px) !important;
+  border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+  border-top-left-radius: 5px !important;
+  border-top-right-radius: 5px !important;
+}
+
+.select-up .is-open .Select-control {
+  border-top-right-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-bottom-right-radius: 5px !important;
+  border-bottom-left-radius: 5px !important;
+}
+
+#delivery_dialog, 
+#transcode_dialog, 
+#deliverPlayout_dialog{
+/*  overflow-y: auto; */
+}
+
+.form-textfield,
+.mdc-textfield__input {
+  width: 100%;
+  height: 88px;
+  font-size: 14px;
+  margin: auto;
+}
+
+.form-list-item {
+  padding: 0 20px;
+}
+
+.form-list-item.item-assetfile,
+.form-list-item.item-destination-af,
+.form-list-item.item-composition,
+.form-list-item.item-playout-system {
+  background-color: var(--white);
+  box-shadow: 1px 1px 5px #dcdcdc;
+  border-radius: 3px;
+}
+
+.form-list-item.item-assetfile,
+.form-list-item.item-composition,
+.form-list-item.item-playout-system {
+  cursor: pointer;
+}
+
+.form-list-item.item-assetfile:hover,
+.form-list-item.item-composition:hover,
+.form-list-item.item-playout-system:hover {
+  opacity: 0.8;
+}
+
+
+.form-list-item.assetfile .af-composition-id,
+.form-list-item.assetfile .af-profile,
+.form-list-item.assetfile .af-duration,
+.form-list-item.assetfile .af-filesize {
+  word-wrap: break-word;
+  white-space: normal;
+  
+}
+
+.selected-assetfile-input input {
+  font-size: 14px;
+  border-bottom: 1px solid var(--charcoal);
+}
+.selected-assetfile-input input:hover,
+.selected-assetfile-input input:focus {
+  border-bottom: 1px solid var(--salmon);
+}
+
+.item-destination-af .selected-assetfile-input p, 
+.item-destination-af label {
+  font-size: 13px;
+}
+
+.core-metadata label {
+  font-weight: normal !important;
+  clear: both;
+  display: block;
+  padding: 3px 0;
+}
+
+.core-metadata label span.name {
+  font-size: 1.1em;
+  color: var(--darkgrey);
+  font-family: openSansRegular;
+  font-weight: bold;
+  font-style: normal;
+  width: 100%;
+  display: inline-block;
+  text-align: right;
+  padding: 0;
+}
+
+.core-metadata label span.separator {
+  margin: auto 10px;
+  color: grey;
+}
+
+.core-metadata .value {
+  font-family: openSansRegular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-style: normal;
+}
+
+.core-metadata .edit-button {
+  color: grey;
+  width: 16px;
+  height: 16px;
+  margin-left: 10px;
+  padding: 0;
+}    
+
+.core-metadata .edit-button:hover {
+ color: var(--darkgrey); 
+}
+     
+.assetfile-attributes,
+.assetfile-filelocations {
+  margin: 20px 0;
+}
+
+.assetfile-attributes .group,
+.assetfile-filelocations .group {
+  margin: 0;
+}
+
+.assetfile-attributes .group-header {
+  color: var(--charcoal);
+  font-family: openSansLight;
+  font-style: normal;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 15px;
+  border-bottom: 1px solid var(--lightgrey);    
+}
+
+.assetfile-attributes .group,
+.assetfile-filelocations .group-content {
+  box-shadow: 1px 1px 5px var(--lightgrey);
+  padding: 15px;
+  border-radius: 3px;
+}
+
+.tab-pane.active {
+  padding: 0;
+}
+
+.tab-pane.active .ReactTable .rt-table,
+.tab-pane.active .ReactTable .rt-noData {
+  border: none;
+}
+
+
+.tab-pane.active#tasks-tab .ReactTable .rt-noData {
+  border-top: 1px solid #E1E1E1;
+}
+
+tab-pane .btn-compo {
+  width: 95%;
+}
+
+#assetfiles-tab {
+  top: 105px;
+}
+
+.metadata-tab-content .group-header,
+.metadata-tab-content .group-item {
+    padding: 15px 20px;
+    background-color: var(--white);
+    font-size: 13px;
+}
+
+.group-item {   
+    display:block;
+    clear:both;
+}
+
+.metadata-tab-content .group {
+    border-bottom: 1px solid #ddd;
+}
+
+.metadata-tab-content .primary {
+    font-size: 14px;
+    color: #757575;
+}
+
+.item.core-metadata {
+	font-size: 0.75em;
+}
+
+.core-metadata .value .label {
+  margin-right: 5px;
+}
+
+.label-primary {
+  background-color: var(--darkgrey);
+  opacity: 0.8;
+}
+
+#details-page .asset_tabs {
+  padding-right: 0;
+}
+
+#details-page .asset_tabs .nav-link {
+  width: auto;
+}
+
+.metadata-tab-content {
+  font-family: openSansLight;
+}
+
+.metadata-tab-content .group-header {
+  font-size: 15px;
+  color: var(--red);
+  background: #fafafa;
+  border-bottom: 1px solid #ddd;
+}
+
+.metadata-tab-content .primary {
+  font-size: 14px;
+  color: var(--darkgrey);
+}
+
+.metadata-tab-content .secondary {
+  font-size: 12px;
+}
+
+#feedback_delivery_dialog h2,
+#feedback_transcode_dialog h2 {
+  font-family: openSansLight;
+  color: var(--red);
+}
+
+.dialog-header {
+  background-color: var(--darkgrey);
+  margin: 0 !important;
+  padding: 20px 25px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.dialog-header h4 {
+  color: var(--white) !important;
+  margin-bottom: 0 !important;
+}
+
+.dialog-footer {
+  border-top: 1px solid var(--lightgrey);
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-bottom: 0 !important;
+  padding: 15px 20px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  --mdc-theme-primary: var(--salmon);
+}
+
+.dialog-footer .dialog-warning {
+  color: var(--red);
+}
+
+.dialog-footer .btn-delivery,
+.dialog-footer .btn-transcode,
+.dialog-footer .btn-deliverPlayout {
+  float: right;
+  text-align: center;
+  margin: auto;
+}
+
+.dialog-footer .mdc-form-field {
+  margin-left: -11px;
+  font-family: openSansRegular;
+  color: var(--darkgrey);
+}
+
+.dialog-footer .btn-dismiss {
+  background-color: var(--midgrey);
+  color: var(--white); 
+}
+
+.dialog-footer .btn-confirm {
+  background-color: var(--maroon);
+  color: var(--white); 
+}
+
+.dialog-footer .btn-dismiss,
+.dialog-footer .btn-confirm {
+  float: right;
+  text-align: center;
+  margin: auto 10px;
+  width: 85px;
+}
+
+#edit_dialog {
+  width: 600px;
+  height: 300px;
+	border-radius: 3px;
+  font-family: openSansLight;
+  font-size: 12pt;
+}
+
+#edit_dialog #select-options {
+  margin-top: 50px;
+}
+
+
+.assetfile-attributes #no-metadata {
+  color: var(--darkgrey);
+  font-size: 15px;
+  font-family: openSansLight;
+  text-align: center;
+}

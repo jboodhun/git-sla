@@ -8,8 +8,7 @@ import {Router, Route} from 'react-router';
 const routes = {
   '/': 'Home',
   '/home': '',
-  '/tasks': 'Tasks',
-  '/register': 'Register'
+  '/workflow': 'Workflow'
 };
 
 export default routes;

@@ -14,11 +14,10 @@ rm("-rf", "dist");
 module.exports = {
   // Tell Webpack which file kicks off our app.
   entry: {
+     //entry: ['babel-regenerator-runtime', path.resolve(__dirname, 'app/src/index.js')]
     'main': path.resolve(__dirname, 'app/src/index.js')
   },
   // Tell Weback to output our bundle to ./dist/bundle.js
-  // bundle.js is the file that combines all you node.js modules transpiled
-  // into Normal Javascript that can be read by the browser.
   output: {
     filename: 'bundle.js',
     publicPath: buildPath,
@@ -42,8 +41,10 @@ module.exports = {
       {
         test: /\.(js)$/,
         loader: "babel",
+        exclude: path.resolve(__dirname, 'node_modules/'),
         query: {
-            presets: ['react', 'es2015', "stage-0", "stage-3", "stage-2", "react-app"]
+            presets: ['react', 'es2015', "stage-0", "stage-3", "stage-2"],
+            compact: false
         }
       }
     ],
@@ -75,11 +76,11 @@ module.exports = {
   },
   // Enable the Webpack dev server which will build, serve, and reload our
   // project on changes.
-  // Specify the port to run the app on localhost.
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
-    port: 9000,
+    host: 'localhost',
+    port: 8000,
     historyApiFallback: true // This makes the path dynamic and in static mode it will work.
   },
   plugins: [
@@ -95,32 +96,50 @@ module.exports = {
     // This plugin will copy files over for us without transforming them.
     // That's important because the custom-elements-es5-adapter.js MUST
     // remain in ES2015.
+
     new CopyWebpackPlugin([{
-      from: path.resolve(__dirname, 'app/bower_components/webcomponentsjs/*.js'),
+      from: path.resolve(__dirname, 'app.conf.js'),
       to: 'js/[name].[ext]'
     }]),
 
-    // Move files out of your bower bower_components
-    // Or node modules into your dist directory
-    // to server for your app.
+    new CopyWebpackPlugin([{
+      from: path.resolve(__dirname, 'app/bower_components/webcomponentsjs/*.js'),
+      to: 'bower_components/webcomponentsjs/[name].[ext]'
+    }]),
+
+    new CopyWebpackPlugin([{
+      from: path.resolve(__dirname, 'app/bower_components/moment/*.js'),
+      to: 'bower_components/moment/[name].[ext]'
+    }]),
+
+    new CopyWebpackPlugin([{
+      from: path.resolve(__dirname, 'app/bower_components/jquery/dist/jquery.min.js'),
+      to: 'bower_components/jquery/[name].[ext]'
+    }]),
+
+    new CopyWebpackPlugin([{
+      from: path.resolve(__dirname, 'app/bower_components/bootstrap/dist/js/bootstrap.min.js'),
+      to: 'bower_components/bootstrap/[name].[ext]'
+    }]),
+
+    new CopyWebpackPlugin([{
+      from: path.resolve(__dirname, 'node_modules/default-passive-events/default-passive-events.js'),
+      to: 'js/[name].[ext]'
+    }]),
+
+    new CopyWebpackPlugin([{
+      from: path.resolve(__dirname, 'app/bower_components/bootstrap/dist/css/bootstrap.min.css'),
+      to: 'css/[name].[ext]'
+    }]),
+
     new CopyWebpackPlugin([{
       from: path.resolve(__dirname, 'app/bower_components/font-awesome/css/font-awesome.min.css'),
       to: 'css/[name].[ext]'
     }]),
 
     new CopyWebpackPlugin([{
-      from: path.resolve(__dirname, 'app/bower_components/jquery/dist/jquery.min.js'),
-      to: 'bower_components/jquery/dist/[name].[ext]'
-    }]),
-
-    new CopyWebpackPlugin([{
-      from: path.resolve(__dirname, 'app/bower_components/bootstrap/dist/js/bootstrap.min.js'),
-      to: 'bower_components/bootstrap/dist/js/[name].[ext]'
-    }]),
-
-    new CopyWebpackPlugin([{
-      from: path.resolve(__dirname, 'app/bower_components/bootstrap/dist/css/bootstrap.min.css'),
-      to: 'bower_components/bootstrap/dist/css/[name].[ext]'
+      from: path.resolve(__dirname, 'app/bower_components/font-awesome/fonts/*'),
+      to: 'fonts/[name].[ext]'
     }]),
 
     new CopyWebpackPlugin([{
@@ -137,6 +156,5 @@ module.exports = {
       from: path.resolve(__dirname, 'app/images/*'),
       to: 'images/[name].[ext]'
     }])
-
   ]
 };
