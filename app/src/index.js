@@ -23,7 +23,6 @@ const store = configureStore();
 
 // Containers
 import Full from './containers/Full/';
-import Detail from './containers/Full/Detail';
 
 
 // Before anything check login sessions.
@@ -34,7 +33,6 @@ ReactDOM.render((
 		  <Provider store={store}>
 			  <Router history={history}>
 			    <Switch>
-			      <Route path="/workflow/:id" name="Workflow" component={Detail}/>
 			      <Route path="/" name="Home" component={Full}/>
 			    </Switch>
 			  </Router>

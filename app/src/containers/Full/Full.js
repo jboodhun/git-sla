@@ -30,8 +30,7 @@ class Full extends Component {
           <main className="main">
 
               <Switch>
-                <Route path="/repos" name="Repos List" component={Github}/>
-                <Redirect from="/" to="/repos"/>
+                <Route path="/" name="Repos List" component={Github}/>
               </Switch>
 
           </main>
