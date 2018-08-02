@@ -104,22 +104,22 @@ module.exports = {
 
     new CopyWebpackPlugin([{
       from: path.resolve(__dirname, 'app/bower_components/webcomponentsjs/*.js'),
-      to: 'bower_components/webcomponentsjs/[name].[ext]'
+      to: 'js/[name].[ext]'
     }]),
 
     new CopyWebpackPlugin([{
       from: path.resolve(__dirname, 'app/bower_components/moment/*.js'),
-      to: 'bower_components/moment/[name].[ext]'
+      to: 'js/[name].[ext]'
     }]),
 
     new CopyWebpackPlugin([{
       from: path.resolve(__dirname, 'app/bower_components/jquery/dist/jquery.min.js'),
-      to: 'bower_components/jquery/[name].[ext]'
+      to: 'js/[name].[ext]'
     }]),
 
     new CopyWebpackPlugin([{
       from: path.resolve(__dirname, 'app/bower_components/bootstrap/dist/js/bootstrap.min.js'),
-      to: 'bower_components/bootstrap/[name].[ext]'
+      to: 'js/[name].[ext]'
     }]),
 
     new CopyWebpackPlugin([{
@@ -144,7 +144,7 @@ module.exports = {
 
     new CopyWebpackPlugin([{
       from: path.resolve(__dirname, 'app/bower_components/underscore/*.js'),
-      to: 'bower_components/underscore/[name].[ext]'
+      to: 'js/[name].[ext]'
     }]),
 
     new CopyWebpackPlugin([{
