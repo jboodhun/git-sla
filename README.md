@@ -35,6 +35,10 @@ To build the App:
 yarn run build
 ```
 
+## Configs
+
+Use the ```app.conf.js``` file to update the Github Organisation you want.
+
 
 ## Rate Limit For Github API Calls
 
