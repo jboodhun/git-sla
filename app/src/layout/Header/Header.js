@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-
-import configureStore from '../../store/configureStore';
-const store = configureStore();
+import Updated from '../../components/Updated/';
 
 class Header extends Component {
 
@@ -20,9 +18,7 @@ class Header extends Component {
       <header>
         <div className="inner">
           <img src={this.props.githubGravatar} width="60"/><span id="user">{this.props.githubUser} <span className="text-muted">Github Activity Dashboard</span></span>
-          <span className="updated">
-          
-          </span>
+          <Updated />
         </div>
       </header>
     )

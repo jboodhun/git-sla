@@ -24,12 +24,12 @@ class Repos extends Component {
   componentDidMount() {
     this.props.fetchRepos();
     // For a future polling mechanism.
-    // this.setRefreshInterval();
+    this.setRefreshInterval();
   }
 
   setRefreshInterval() {
     this.clearRefreshInterval();
-    setInterval(this.refresh, 10000);
+    setInterval(this.refresh, 180000);
     this.refresh();
   }
 
@@ -38,7 +38,7 @@ class Repos extends Component {
   }
 
   refresh() {
-    console.log('Fetch ...');
+    console.log('Fetch Github Data ...');
     this.props.fetchRepos();
   }
 
