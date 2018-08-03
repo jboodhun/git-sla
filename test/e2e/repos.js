@@ -5,9 +5,9 @@ var res = [];
 module.exports = {
   'ADFS Login Test': function (browser) {
     browser
-      .url('http://localhost')   // visit the url
+      .url('http://localhost:8000')   // visit the url
       .waitForElementVisible('.MainActionContainer')
-      .url('http://localhost')   // visit the url
+      .url('http://localhost:9000')   // visit the url
       .pause(500)
       .waitForElementVisible('#root')
       .end();
