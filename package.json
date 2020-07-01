@@ -41,7 +41,7 @@
     "web-component-tester": "^4.0.0",
     "webdriverio": "^4.8.0",
     "webpack": "^3.4.1",
-    "webpack-dev-server": "^2.7.1",
+    "webpack-dev-server": "^3.11.0",
     "winston": "^2.2.0",
     "yargs": "^4.7.1"
   },
