@@ -141,7 +141,7 @@
     "path-to-regexp": "^2.2.1",
     "polymer-webpack-loader": "^1.2.6",
     "query-string": "^5.0.0",
-    "randomatic": "^1.1.5",
+    "randomatic": "^3.1.1",
     "react": "^15.6.1",
     "react-bootstrap-table-next": "^0.1.15",
     "react-bootstrap-table2-paginator": "^0.1.6",
