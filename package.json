@@ -98,7 +98,7 @@
     "antd": "^2.13.8",
     "antd-init": "^2.0.4",
     "assert": "^1.4.1",
-    "axios": "^0.16.2",
+    "axios": "^0.19.2",
     "babel-core": "^6.25.0",
     "babel-jest": "^21.2.0",
     "babel-loader": "^7.1.1",
